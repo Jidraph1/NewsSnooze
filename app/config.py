@@ -21,5 +21,5 @@ class DevConfig(Config):
     Config: The parent configuration class with general configuration settings
     """
 
-    Debug = True
+    DEBUG = True
 

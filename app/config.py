@@ -2,7 +2,7 @@ class Config:
     """
     General confguration parent class
     """
-    MOVIE_API_BASE_URL = 'https://newsapi.org/v2/everything?q=Apple&from=2022-04-30&sortBy=popularity&apiKey=API_KEY'
+    NEWS_API_BASE_URL = 'https://newsapi.org/v2/everything?q=Apple&from=2022-04-30&sortBy=popularity&apiKey=API_KEY'
 
 class ProdConfig(Config):
     """

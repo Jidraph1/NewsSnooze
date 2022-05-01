@@ -3,47 +3,46 @@ import urllib.request,json
 from .models import source
 from .models import articles
 
-#Getting api key
-api_key = app.config['NEWS_API_KEY']
+# Getting api key
+apiKey = app.config['NEWS_API_KEY']
 
-#Getting the News base Url
+# Getting base url
 base_url = app.config['NEWS_API_BASE_URL']
 
-def get_source():
+def get_sources():
     """
-    Function that gets the json response to our Url request
+    A function that gets the json files from our url request
     """
-    get_source_url = base_url.format(api_key)
-    
-    with urllib.request.urlopen(get_source_url) as url:
-        get_source_data = url.read()
-        get_source_response = json.loads(get_source_data)
+    get_sources_url = base_url.format(apiKey)
 
-        source_results = None
-        if get_source_response['results']:
-            source_results_list = get_source_response['results']
-            source_results = process_results(source_result_list)
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
 
-            return source_results
+        source_results= None
 
-def process_results():
+        if get_sources_response["sources"]:
+            source_results_list = get_sources_response['sources']
+            source_results = process_results(source_results_list)
+
+    return source_results
+
+def process_results(source_list):
     """
-    Function that processes the source result and tranforms them into a list of objects
-    Args:
-    source_list: A list of dictionaries that contain the source details
-    Returns: 
-    source_list: A list of source objects
+    A function that processes the news sources results
+   
     """
-
-    source_results = []
+    source_results=[]
     for source_item in source_list:
-        id = source_item.get('id')
-        title = source_item.get('title')
-        description = source_item.get('description')
-        url = source_item.get('url')
-        category = source_item.get ('category')
+        id = source_item.get("id")
+        name = source_item.get("name")
+        description = source_item.get("description")
+        url = source_item.get("url")
+        category = source_item.get("category")
+
 
         source_object=source.Source(id,name,description,url,category)
         source_results.append(source_object)
 
     return source_results
+

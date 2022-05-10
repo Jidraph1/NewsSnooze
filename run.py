@@ -1,6 +1,6 @@
 from app import app
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0",port=5016)
 
-    # https://newsapi.org/v2/everything?q=Apple&from=2022-04-30&sortBy=popularity&apiKey=d344e4abb67f4eb9b70420c812b2c7c2
+    

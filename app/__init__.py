@@ -1,7 +1,7 @@
 from flask import Flask
 from .config import DevConfig
 from flask_bootstrap import Bootstrap
-from dotenv import load_dotenv, find_dotenv
+# from dotenv import load_dotenv, find_dotenv
 
 #initialising the application
 app = Flask(__name__, instance_relative_config = True)
